@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.project.ProjectsController">
+    <Label styleClass="page-title">Projects</Label>
+    <Button onAction="#addProject">New Project</Button>
+
+    <Label styleClass="page-heading">Sort by</Label>
+    <HBox spacing="10">
+        <Button onAction="#sortByName">Name</Button>
+        <Button onAction="#sortByEndDate">Deadline</Button>
+    </HBox>
+
+    <ScrollPane fx:id="scrollPane">
+        <VBox fx:id="projectsList" spacing="10" />
+    </ScrollPane>
+</VBox>

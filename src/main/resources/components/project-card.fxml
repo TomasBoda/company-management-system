@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox onMouseClicked="#navigateToEditProjectPage" spacing="8" styleClass="project-card" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.project.ProjectCardController">
+    <Label fx:id="name" styleClass="project-card-name" />
+    <Label fx:id="date" styleClass="project-card-date" />
+    <Label fx:id="description" styleClass="project-card-description" />
+    <ProgressBar fx:id="progressBar" />
+</VBox>

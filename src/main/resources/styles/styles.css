@@ -1,0 +1,127 @@
+
+.employee-card {
+    -fx-padding: 12;
+    -fx-background-radius: 3;
+    -fx-background-color: rgba(0, 0, 0, 0.07);
+}
+
+.employee-card:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+.employee-card .employee-card-name {
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.employee-card .employee-card-role {
+    -fx-font-size: 14;
+}
+
+.employee-card .employee-card-employment-type {
+    -fx-font-size: 14;
+    -fx-text-fill: rgba(0, 0, 0, 0.7);
+}
+
+.project-card {
+    -fx-padding: 12;
+    -fx-background-radius: 3;
+    -fx-background-color: rgba(0, 0, 0, 0.07);
+}
+
+.project-card:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+.project-card .project-card-name {
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.project-card .project-card-date {
+    -fx-text-fill: rgba(0, 0, 0, 0.7);
+    -fx-font-size: 12;
+}
+
+.project-card .project-card-description {
+    -fx-text-fill: black;
+    -fx-font-size: 14;
+}
+
+.team-card {
+    -fx-padding: 12;
+    -fx-background-radius: 3;
+    -fx-background-color: rgba(0, 0, 0, 0.07);
+}
+
+.team-card:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+.team-card .team-card-name {
+    -fx-text-fill: black;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+}
+
+.team-card .team-card-employees {
+    -fx-text-fill: rgba(0, 0, 0, 0.7);
+    -fx-font-size: 12;
+}
+
+#ticketsPanel {
+
+}
+
+.ticket-column {
+    -fx-min-height: 200;
+    -fx-padding: 10;
+
+    -fx-background-color: rgba(0, 0, 0, 0.07);
+}
+
+.ticket {
+    -fx-background-color: white;
+    -fx-background-radius: 3;
+
+    -fx-padding: 10;
+}
+
+.ticket .ticket-title {
+    -fx-text-fill: black;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+.ticket .ticket-assignee {
+    -fx-text-fill: rgba(0, 0, 0, 0.7);
+    -fx-font-size: 12;
+}
+
+.ticket .ticket-points {
+    -fx-text-fill: rgba(0, 0, 0, 0.7);
+    -fx-font-size: 12;
+}
+
+.log-card {
+    -fx-padding: 12;
+    -fx-background-radius: 3;
+    -fx-background-color: rgba(0, 0, 0, 0.07);
+}
+
+.log-card .log-card-title {
+    -fx-text-fill: black;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.log-card .log-card-datetime {
+    -fx-font-size: 14;
+}
+
+.log-card .log-card-description {
+    -fx-font-size: 14;
+    -fx-text-fill: rgba(0, 0, 0, 0.7);
+}

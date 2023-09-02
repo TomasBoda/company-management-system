@@ -1,0 +1,30 @@
+
+.sidebar {
+    -fx-min-width: 250px;
+    -fx-background-color: black;
+}
+
+.sidebar .label {
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+
+    -fx-padding: 20px;
+}
+
+.sidebar .hyperlink {
+    -fx-font-size: 15px;
+    -fx-text-fill: rgba(255, 255, 255, 0.5);
+
+    -fx-min-width: 250px;
+    -fx-padding: 10px 20px;
+    -fx-underline: false;
+
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.sidebar .hyperlink:hover {
+    -fx-text-fill: white;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}

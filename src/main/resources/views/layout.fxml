@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="layout" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.LayoutController">
+    <left>
+        <VBox styleClass="sidebar">
+            <Label>Workflow</Label>
+            <Hyperlink text="Dashboard" onAction="#navigateToDashboardPage"/>
+            <Hyperlink text="Employees" onAction="#navigateToEmployeesPage"/>
+            <Hyperlink text="Teams" onAction="#navigateToTeamsPage"/>
+            <Hyperlink text="Projects" onAction="#navigateToProjectsPage"/>
+            <Hyperlink text="Logs" onAction="#navigateToLogsPage"/>
+        </VBox>
+    </left>
+    <center />
+</BorderPane>

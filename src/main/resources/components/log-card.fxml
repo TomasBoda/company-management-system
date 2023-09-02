@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="8" styleClass="log-card" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.log.LogCardController">
+    <Label fx:id="title" styleClass="log-card-title" />
+    <Label fx:id="datetime" styleClass="log-card-datetime" />
+    <Label fx:id="description" styleClass="log-card-description" />
+</VBox>

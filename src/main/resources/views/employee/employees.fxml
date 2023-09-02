@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.employee.EmployeesController">
+    <Label styleClass="page-title">Employees</Label>
+    <Button onAction="#addEmployee">New Employee</Button>
+
+    <Label styleClass="page-heading">Sort by</Label>
+    <HBox spacing="10">
+        <Button onAction="#sortByName">Name</Button>
+        <Button onAction="#sortByRole">Role</Button>
+        <Button onAction="#sortByEmploymentType">Employment type</Button>
+    </HBox>
+
+    <ScrollPane fx:id="scrollPane">
+        <VBox fx:id="employeesList" spacing="10" />
+    </ScrollPane>
+</VBox>

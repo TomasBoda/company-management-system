@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="ticket" onMouseClicked="#navigateToEditTicketPage" spacing="5" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.ticket.TicketController">
+    <Label fx:id="title" styleClass="ticket-title" />
+    <Label fx:id="assignee" styleClass="ticket-assignee" />
+    <Label fx:id="points" styleClass="ticket-points" />
+</VBox>

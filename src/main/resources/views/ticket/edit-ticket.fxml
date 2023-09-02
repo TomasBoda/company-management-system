@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.ticket.EditTicketController">
+    <Label styleClass="page-title" fx:id="ticketName" />
+
+    <VBox styleClass="panel" spacing="20">
+        <GridPane hgap="10" vgap="10">
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="0">ID</Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="idField" promptText="Ticket ID" editable="false" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Project</Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="projectField" promptText="Ticket project" editable="false" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Title</Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="titleField" promptText="Ticket title" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Description</Label>
+            <TextArea GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="descriptionField" promptText="Ticket description" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="4">Status</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="statusField" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="5">Points</Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="pointsField" promptText="Ticket points" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="6">Assignee</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="assigneeField" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="7">Reviewer</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="7" fx:id="reviewerField" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="8">Reporter</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="8" fx:id="reporterField" />
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button onAction="#editTicket">Update</Button>
+            <Button onAction="#removeTicket">Remove</Button>
+        </HBox>
+    </VBox>
+</VBox>

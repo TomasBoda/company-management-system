@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="8" onMouseClicked="#navigateToEditEmployeePage" styleClass="employee-card" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.employee.EmployeeCardController">
+    <Label fx:id="name" styleClass="employee-card-name" />
+    <Label fx:id="role" styleClass="employee-card-role" />
+    <Label fx:id="employmentType" styleClass="employee-card-employment-type" />
+</VBox>

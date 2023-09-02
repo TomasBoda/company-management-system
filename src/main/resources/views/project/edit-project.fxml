@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fx:id="scrollPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.project.EditProjectController">
+    <VBox styleClass="page" spacing="20">
+        <Label styleClass="page-title" fx:id="nameLabel" />
+
+        <VBox styleClass="panel" spacing="20">
+            <GridPane hgap="10" vgap="10">
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0">ID</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="idField" editable="false" promptText="Project ID" />
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Name</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="nameField" promptText="Project name" />
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Description</Label>
+                <TextArea GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="descriptionField" promptText="Project description" />
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Budget</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="budgetField" promptText="Project budget (monthly)" />
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="4">Team</Label>
+                <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="teamField" />
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="5">Start Date</Label>
+                <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="startDateField" promptText="Project start date" />
+
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="6">End Date</Label>
+                <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="endDateField" promptText="Project end date" />
+            </GridPane>
+
+            <HBox spacing="10">
+                <Button onAction="#editProject">Update</Button>
+                <Button onAction="#removeProject">Remove</Button>
+            </HBox>
+        </VBox>
+
+        <Button onAction="#addTicket">New Ticket</Button>
+
+        <HBox spacing="10">
+            <VBox HBox.hgrow="ALWAYS" prefWidth="100.0" spacing="10" styleClass="ticket-column" fx:id="pendingTicketsPanel">
+            </VBox>
+
+            <VBox HBox.hgrow="ALWAYS" prefWidth="100.0" spacing="10" styleClass="ticket-column" fx:id="inProgressTicketsPanel">
+            </VBox>
+
+            <VBox HBox.hgrow="ALWAYS" prefWidth="100.0" spacing="10" styleClass="ticket-column" fx:id="inReviewTicketsPanel">
+            </VBox>
+
+            <VBox HBox.hgrow="ALWAYS" prefWidth="100.0" spacing="10" styleClass="ticket-column" fx:id="completedTicketsPanel">
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx"  xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.dashboard.DashboardController">
+    <Label styleClass="page-title">Dashboard</Label>
+
+    <VBox styleClass="panel" spacing="20">
+        <Label styleClass="page-heading">Overview</Label>
+
+        <GridPane hgap="30" vgap="10">
+            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="0">Employees</Label>
+            <Label GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="employeesLabel" />
+
+            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="1">Teams</Label>
+            <Label GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="teamsLabel" />
+
+            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="2">Projects</Label>
+            <Label GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="projectsLabel" />
+
+            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="3">Revenue</Label>
+            <Label GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="revenueLabel" />
+
+            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="4">Spendings</Label>
+            <Label GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="spendingsLabel" />
+
+            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="5">Income ratio</Label>
+            <ProgressBar GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="incomeRatio" />
+        </GridPane>
+    </VBox>
+</VBox>

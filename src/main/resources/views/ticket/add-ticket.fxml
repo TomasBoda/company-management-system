@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.ticket.AddTicketController">
+    <Label styleClass="page-title">New Ticket</Label>
+
+    <VBox styleClass="panel" spacing="20">
+        <GridPane hgap="10" vgap="10">
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="0">Project</Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="projectField" promptText="Ticket project" editable="false" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Title</Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="titleField" promptText="Ticket title" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Description</Label>
+            <TextArea GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="descriptionField" promptText="Ticket description" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Status</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="statusField" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="4">Points</Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="pointsField" promptText="Ticket points" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="5">Assignee</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="assigneeField" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="6">Reviewer</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="reviewerField" />
+
+            <Label GridPane.columnIndex="0" GridPane.rowIndex="7">Reporter</Label>
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="7" fx:id="reporterField" />
+        </GridPane>
+
+        <Button onAction="#addTicket">Add</Button>
+    </VBox>
+</VBox>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox onMouseClicked="#navigateToEditTeamPage" spacing="8" styleClass="team-card" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.team.TeamCardController">
+    <VBox spacing="8">
+        <Label fx:id="name" styleClass="team-card-name" />
+        <Label fx:id="employees" styleClass="team-card-employees" />
+    </VBox>
+</VBox>

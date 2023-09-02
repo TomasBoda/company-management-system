@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.team.TeamsController">
+    <Label styleClass="page-title">Teams</Label>
+    <Button onAction="#addTeam">New Team</Button>
+
+    <Label styleClass="page-heading">Sort by</Label>
+    <HBox spacing="10">
+        <Button onAction="#sortByName">Name</Button>
+    </HBox>
+
+    <ScrollPane fx:id="scrollPane">
+        <VBox fx:id="teamsList" spacing="10" />
+    </ScrollPane>
+</VBox>
