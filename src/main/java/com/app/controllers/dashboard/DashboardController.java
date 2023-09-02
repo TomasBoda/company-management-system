@@ -6,6 +6,7 @@ import com.app.model.Employee;
 import com.app.model.Log;
 import com.app.model.Project;
 import com.app.model.Team;
+import com.app.utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -55,7 +56,7 @@ public class DashboardController implements Initializable {
         Response<Project[]> response = Api.projects().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -66,7 +67,7 @@ public class DashboardController implements Initializable {
         Response<Employee[]> response = Api.employees().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -77,7 +78,7 @@ public class DashboardController implements Initializable {
         Response<Team[]> response = Api.teams().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -88,7 +89,7 @@ public class DashboardController implements Initializable {
         Response<Integer> response = Api.other().getTotalRevenue();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -99,7 +100,7 @@ public class DashboardController implements Initializable {
         Response<Integer> response = Api.other().getTotalSpendings();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

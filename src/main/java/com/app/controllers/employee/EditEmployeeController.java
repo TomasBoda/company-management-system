@@ -8,6 +8,7 @@ import com.app.model.Role;
 import com.app.router.generic.Page;
 import com.app.main.Pages;
 import com.app.router.Router;
+import com.app.utils.Dialog;
 import com.app.utils.NodeUtil;
 import com.app.utils.Validator;
 import javafx.fxml.FXML;
@@ -72,7 +73,7 @@ public class EditEmployeeController extends Page<Employee> implements Initializa
         Response<Boolean> response = Api.employees().edit(new Employee(id, name, email, role, employmentType, Integer.parseInt(salary)));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -86,7 +87,7 @@ public class EditEmployeeController extends Page<Employee> implements Initializa
         Response<Boolean> response = Api.employees().remove(id);
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

@@ -7,6 +7,7 @@ import com.app.model.Team;
 import com.app.router.generic.LoaderPage;
 import com.app.main.Pages;
 import com.app.router.Router;
+import com.app.utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -41,7 +42,7 @@ public class TeamsController extends LoaderPage<Team> implements Initializable {
         Response<Team[]> response = Api.teams().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

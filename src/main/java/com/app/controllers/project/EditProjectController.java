@@ -106,7 +106,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
         LocalDate endDate = endDateField.getValue();
 
         if (Validator.areEmpty(id, name, description, budget, team)) {
-            Dialog.show("Empty fields", "ID, Name, Description, Budget and Team fields cannot be empty.");
+            Dialog.info("Empty fields", "ID, Name, Description, Budget and Team fields cannot be empty.");
             return;
         }
 
@@ -115,7 +115,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
         Response<Boolean> response = Api.projects().edit(new Project(id, teamId, name, description, Integer.parseInt(budget), Date.valueOf(startDate), Date.valueOf(endDate)));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -129,14 +129,14 @@ public class EditProjectController extends Page<Project> implements Initializabl
         Response<Boolean> removeProjectResponse = Api.projects().remove(id);
 
         if (removeProjectResponse.getStatus() != 200) {
-            System.out.println(removeProjectResponse.getMessage());
+            Dialog.info("Database Error", removeProjectResponse.getMessage());
             System.exit(0);
         }
 
         Response<Boolean> removeProjectTicketsResponse = Api.projects().removeProjectTickets(id);
 
         if (removeProjectTicketsResponse.getStatus() != 200) {
-            System.out.println(removeProjectTicketsResponse.getMessage());
+            Dialog.info("Database Error", removeProjectTicketsResponse.getMessage());
             System.exit(0);
         }
 
@@ -175,7 +175,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
         Response<Ticket[]> response = Api.tickets().getTicketsByProject(getData().getId());
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -186,7 +186,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
         Response<Team> response = Api.teams().get(teamId);
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -197,7 +197,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
         Response<Team[]> response = Api.teams().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

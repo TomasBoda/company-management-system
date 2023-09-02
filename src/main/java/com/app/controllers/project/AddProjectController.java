@@ -56,7 +56,7 @@ public class AddProjectController implements Initializable {
         LocalDate endDate = endDateField.getValue();
 
         if (Validator.areEmpty(id, name, description, budget, team)) {
-            Dialog.show("Empty fields", "ID, Name, Description and Team fields cannot be empty.");
+            Dialog.info("Empty fields", "ID, Name, Description and Team fields cannot be empty.");
             return;
         }
 
@@ -65,7 +65,7 @@ public class AddProjectController implements Initializable {
         Response<Boolean> response = Api.projects().add(new Project(id, teamId, name, description, Integer.parseInt(budget), Date.valueOf(startDate), Date.valueOf(endDate)));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -76,7 +76,7 @@ public class AddProjectController implements Initializable {
         Response<Team[]> response = Api.teams().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

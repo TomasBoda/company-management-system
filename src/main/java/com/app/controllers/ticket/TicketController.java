@@ -7,6 +7,7 @@ import com.app.model.Ticket;
 import com.app.router.generic.Component;
 import com.app.main.Pages;
 import com.app.router.Router;
+import com.app.utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -37,7 +38,7 @@ public class TicketController extends Component<Ticket> {
         Response<Employee> response = Api.employees().get(id);
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

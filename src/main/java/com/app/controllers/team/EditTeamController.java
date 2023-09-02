@@ -59,7 +59,7 @@ public class EditTeamController extends Page<Team> implements Initializable {
         Response<Employee[]> response = Api.teams().getTeamEmployees(getData().getId());
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -72,21 +72,21 @@ public class EditTeamController extends Page<Team> implements Initializable {
         String name = nameField.getText().trim();
 
         if (Validator.areEmpty(id, name) || teamEmployees.isEmpty()) {
-            Dialog.show("Empty field", "Name and Employees fields cannot be empty.");
+            Dialog.info("Empty field", "Name and Employees fields cannot be empty.");
             return;
         }
 
         Response<Boolean> response = Api.teams().edit(new Team(id, name));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
         Response<Boolean> removeTeamEmployeesResponse = Api.teams().removeTeamEmployees(id);
 
         if (removeTeamEmployeesResponse.getStatus() != 200) {
-            System.out.println(removeTeamEmployeesResponse.getMessage());
+            Dialog.info("Database Error", removeTeamEmployeesResponse.getMessage());
             System.exit(0);
         }
 
@@ -94,7 +94,7 @@ public class EditTeamController extends Page<Team> implements Initializable {
             Response<Boolean> addEmployeeResponse = Api.teams().addEmployeeToTeam(id, employee.getId());
 
             if (addEmployeeResponse.getStatus() != 200) {
-                System.out.println(response.getMessage());
+                Dialog.info("Database Error", response.getMessage());
                 System.exit(0);
             }
         }
@@ -109,14 +109,14 @@ public class EditTeamController extends Page<Team> implements Initializable {
         Response<Boolean> removeTeamResponse = Api.teams().remove(id);
 
         if (removeTeamResponse.getStatus() != 200) {
-            System.out.println(removeTeamResponse.getMessage());
+            Dialog.info("Database Error", removeTeamResponse.getMessage());
             System.exit(0);
         }
 
         Response<Boolean> removeTeamEmployeesResponse = Api.teams().removeTeamEmployees(id);
 
         if (removeTeamEmployeesResponse.getStatus() != 200) {
-            System.out.println(removeTeamEmployeesResponse.getMessage());
+            Dialog.info("Database Error", removeTeamEmployeesResponse.getMessage());
             System.exit(0);
         }
 
@@ -158,7 +158,7 @@ public class EditTeamController extends Page<Team> implements Initializable {
                 Response<Employee> response = Api.employees().get(id);
 
                 if (response.getStatus() != 200) {
-                    System.out.println(response.getMessage());
+                    Dialog.info("Database Error", response.getMessage());
                     System.exit(0);
                 }
 
@@ -187,7 +187,7 @@ public class EditTeamController extends Page<Team> implements Initializable {
         Response<Employee[]> response = Api.employees().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

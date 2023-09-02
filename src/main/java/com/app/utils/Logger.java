@@ -10,7 +10,7 @@ public class Logger {
         Response<Boolean> response = Api.logs().add(new Log(Generator.getId(), title, description));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
     }

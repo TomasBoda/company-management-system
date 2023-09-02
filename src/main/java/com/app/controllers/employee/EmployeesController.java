@@ -6,6 +6,7 @@ import com.app.model.Employee;
 import com.app.router.generic.LoaderPage;
 import com.app.main.Pages;
 import com.app.router.Router;
+import com.app.utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -42,7 +43,7 @@ public class EmployeesController extends LoaderPage<Employee> implements Initial
         Response<Employee[]> response = Api.employees().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

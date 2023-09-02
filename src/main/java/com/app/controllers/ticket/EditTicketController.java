@@ -85,7 +85,7 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         String reporter = reporterField.getValue();
 
         if (Validator.areEmpty(id, project, title, description, status, points, assignee, reviewer, reporter)) {
-            Dialog.show("Empty Field", "Id, Title, Description, Status, Points, Assignee, Reviewer and Reporter fields cannot be empty.");
+            Dialog.info("Empty Field", "Id, Title, Description, Status, Points, Assignee, Reviewer and Reporter fields cannot be empty.");
             return;
         }
 
@@ -98,7 +98,7 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         Response<Boolean> response = Api.tickets().edit(new Ticket(id, projectId, title, description, status, Integer.parseInt(points), assigneeId, reviewerId, reporterId));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -112,7 +112,7 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         Response<Boolean> response = Api.tickets().remove(id);
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -124,7 +124,7 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         Response<Project> response = Api.projects().get(projectId);
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -135,7 +135,7 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         Response<Employee> response = Api.employees().get(employeeId);
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -159,7 +159,7 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         Response<Employee[]> response = Api.employees().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

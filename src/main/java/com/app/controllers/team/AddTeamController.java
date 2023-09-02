@@ -46,14 +46,14 @@ public class AddTeamController implements Initializable {
         String name = nameField.getText().trim();
 
         if (Validator.areEmpty(name) || teamEmployees.isEmpty()) {
-            Dialog.show("Empty field", "Name and Employees fields cannot be empty.");
+            Dialog.info("Empty field", "Name and Employees fields cannot be empty.");
             return;
         }
 
         Response<Boolean> response = Api.teams().add(new Team(id, name));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -61,7 +61,7 @@ public class AddTeamController implements Initializable {
             Response<Boolean> addEmployeeResponse = Api.teams().addEmployeeToTeam(id, employee.getId());
 
             if (addEmployeeResponse.getStatus() != 200) {
-                System.out.println(response.getMessage());
+                Dialog.info("Database Error", response.getMessage());
                 System.exit(0);
             }
         }
@@ -104,7 +104,7 @@ public class AddTeamController implements Initializable {
                 Response<Employee> response = Api.employees().get(id);
 
                 if (response.getStatus() != 200) {
-                    System.out.println(response.getMessage());
+                    Dialog.info("Database Error", response.getMessage());
                     System.exit(0);
                 }
 
@@ -133,7 +133,7 @@ public class AddTeamController implements Initializable {
         Response<Employee[]> response = Api.employees().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

@@ -5,6 +5,7 @@ import com.app.api.Response;
 import com.app.model.Log;
 import com.app.model.Team;
 import com.app.router.generic.LoaderPage;
+import com.app.utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -40,7 +41,7 @@ public class LogsController extends LoaderPage<Log> implements Initializable {
         Response<Log[]> response = Api.logs().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

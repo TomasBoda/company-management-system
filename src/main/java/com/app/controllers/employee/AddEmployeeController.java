@@ -49,14 +49,14 @@ public class AddEmployeeController implements Initializable {
         String salary = salaryField.getText().trim();
 
         if (Validator.areEmpty(name, email, role, employmentType, salary)) {
-            Dialog.show("Empty fields", "Name, E-mail, Employment and Salary fields cannot be empty.");
+            Dialog.info("Empty fields", "Name, E-mail, Employment and Salary fields cannot be empty.");
             return;
         }
 
         Response<Boolean> response = Api.employees().add(new Employee(id, name, email, role, employmentType, Integer.parseInt(salary)));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

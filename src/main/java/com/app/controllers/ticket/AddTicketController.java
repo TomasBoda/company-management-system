@@ -64,7 +64,7 @@ public class AddTicketController extends Page<Project> implements Initializable 
         String reporter = reporterField.getValue();
 
         if (Validator.areEmpty(id, title, description, status, points, assignee, reviewer, reporter)) {
-            Dialog.show("Empty Field", "Id, Title, Description, Status, Points, Assignee, Reviewer and Reporter fields cannot be empty.");
+            Dialog.info("Empty Field", "Id, Title, Description, Status, Points, Assignee, Reviewer and Reporter fields cannot be empty.");
             return;
         }
 
@@ -77,7 +77,7 @@ public class AddTicketController extends Page<Project> implements Initializable 
         Response<Boolean> response = Api.tickets().add(new Ticket(id, projectId, title, description, status, Integer.parseInt(points), assigneeId, reviewerId, reporterId));
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
@@ -101,7 +101,7 @@ public class AddTicketController extends Page<Project> implements Initializable 
         Response<Employee[]> response = Api.employees().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 

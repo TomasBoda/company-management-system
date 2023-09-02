@@ -2,6 +2,7 @@ package com.app.api;
 
 import com.app.api.model.*;
 import com.app.model.Project;
+import com.app.utils.Dialog;
 
 import java.sql.*;
 
@@ -45,9 +46,8 @@ public class Api {
             //connection = DriverManager.getConnection("jdbc:h2:./database/h2;DB_CLOSE_ON_EXIT=FALSE", "", "");
             connection = DriverManager.getConnection("jdbc:h2:mem:./database/h2", "", "");
             initialize(connection);
-            System.out.println("Connected to the database!");
         } catch (SQLException e) {
-            System.out.println("Could not connect to the database.");
+            Dialog.info("Database Error", "Could not connect to the database.");
             System.exit(0);
         }
     }
@@ -56,7 +56,7 @@ public class Api {
         try {
             connection.close();
         } catch (SQLException e) {
-            System.out.println("Could not disconnect from the database.");
+            Dialog.info("Database Error", "Could not disconnect from the database.");
             System.exit(0);
         }
     }

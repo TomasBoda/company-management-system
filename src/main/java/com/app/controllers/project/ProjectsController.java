@@ -7,6 +7,7 @@ import com.app.model.Project;
 import com.app.router.generic.LoaderPage;
 import com.app.main.Pages;
 import com.app.router.Router;
+import com.app.utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -42,7 +43,7 @@ public class ProjectsController extends LoaderPage<Project> implements Initializ
         Response<Project[]> response = Api.projects().getAll();
 
         if (response.getStatus() != 200) {
-            System.out.println(response.getMessage());
+            Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
