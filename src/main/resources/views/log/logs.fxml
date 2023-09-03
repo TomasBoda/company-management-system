@@ -11,7 +11,7 @@
             <Label styleClass="page-heading">Sort by</Label>
             <HBox spacing="10">
                 <Button onAction="#sortByTitle">Title</Button>
-                <Button onAction="#sortByDate">Date</Button>
+                <Button onAction="#sortByTimestamp">Timestamp</Button>
             </HBox>
         </VBox>
     </HBox>

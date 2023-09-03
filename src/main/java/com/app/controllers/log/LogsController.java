@@ -34,8 +34,8 @@ public class LogsController extends LoaderPage<Log> implements Initializable {
         totalCount.setText(getData().length + " total logs");
         renderData(logsList, "/components/log-card.fxml");
 
-        sortByDate();
-        sortByDate();
+        sortByTimestamp();
+        sortByTimestamp();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class LogsController extends LoaderPage<Log> implements Initializable {
     }
 
     @FXML
-    private void sortByDate() {
+    private void sortByTimestamp() {
         sortBy(Log::getTimestamp, sortTimestampReversed);
         sortTimestampReversed = !sortTimestampReversed;
     }
