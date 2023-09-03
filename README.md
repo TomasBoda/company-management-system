@@ -201,3 +201,5 @@ This action will remove the ticket and navigate the user back to the project's e
 The projects page consists of a vertical list of the entire logs history. The logs list can be sorted by name or timestamp.
 
 ![Alt](/screenshots/log-list.png)
+
+by [Tomáš Boďa](https://github.com/TomasBoda)
