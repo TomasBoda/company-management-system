@@ -7,17 +7,23 @@
     <Label styleClass="page-title">Employees</Label>
     <Button onAction="#addEmployee">New Employee</Button>
 
-    <Label styleClass="page-heading">Search</Label>
-    <HBox spacing="10">
-        <TextField fx:id="searchField" promptText="Search by name" />
-        <Button onAction="#search">Search</Button>
-    </HBox>
+    <HBox spacing="15">
+        <VBox styleClass="panel" spacing="10">
+            <Label styleClass="page-heading">Search</Label>
+            <HBox spacing="10">
+                <TextField fx:id="searchField" promptText="Search by name" />
+                <Button onAction="#search">Search</Button>
+            </HBox>
+        </VBox>
 
-    <Label styleClass="page-heading">Sort by</Label>
-    <HBox spacing="10">
-        <Button onAction="#sortByName">Name</Button>
-        <Button onAction="#sortByRole">Role</Button>
-        <Button onAction="#sortByEmploymentType">Employment type</Button>
+        <VBox styleClass="panel" spacing="10">
+            <Label styleClass="page-heading">Sort by</Label>
+            <HBox spacing="10">
+                <Button onAction="#sortByName">Name</Button>
+                <Button onAction="#sortByRole">Role</Button>
+                <Button onAction="#sortByEmploymentType">Employment type</Button>
+            </HBox>
+        </VBox>
     </HBox>
 
     <Label fx:id="totalCount" />

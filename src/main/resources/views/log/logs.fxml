@@ -6,10 +6,14 @@
 <VBox spacing="20" styleClass="page" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.log.LogsController">
     <Label styleClass="page-title">Logs</Label>
 
-    <Label styleClass="page-heading">Sort by</Label>
-    <HBox spacing="10">
-        <Button onAction="#sortByTitle">Title</Button>
-        <Button onAction="#sortByDate">Date</Button>
+    <HBox spacing="15">
+        <VBox styleClass="panel" spacing="10">
+            <Label styleClass="page-heading">Sort by</Label>
+            <HBox spacing="10">
+                <Button onAction="#sortByTitle">Title</Button>
+                <Button onAction="#sortByDate">Date</Button>
+            </HBox>
+        </VBox>
     </HBox>
 
     <Label fx:id="totalCount" />
