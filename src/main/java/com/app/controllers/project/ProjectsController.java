@@ -2,7 +2,6 @@ package com.app.controllers.project;
 
 import com.app.api.Api;
 import com.app.api.Response;
-import com.app.model.Employee;
 import com.app.model.Project;
 import com.app.router.generic.LoaderPage;
 import com.app.main.Pages;
@@ -13,12 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class ProjectsController extends LoaderPage<Project> implements Initializable {
@@ -29,16 +27,18 @@ public class ProjectsController extends LoaderPage<Project> implements Initializ
     private ScrollPane scrollPane;
     @FXML
     private Label totalCount;
+    @FXML
+    private TextField searchField;
 
     private boolean sortNameReversed = false;
     private boolean sortEndDateReversed = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        renderData(projectsList, "/components/project-card.fxml");
         NodeUtil.initScrollPane(scrollPane);
-
         totalCount.setText(getData().length + " total projects");
+        addSearchKeyPressListener();
+        renderData(projectsList, "/components/project-card.fxml");
     }
 
     @Override
@@ -59,32 +59,28 @@ public class ProjectsController extends LoaderPage<Project> implements Initializ
     }
 
     @FXML
+    private void search() {
+        String query = searchField.getText().trim();
+        filterBy(project -> project.getName().toLowerCase().contains(query.toLowerCase()));
+    }
+
+    private void addSearchKeyPressListener() {
+        searchField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                search();
+            }
+        });
+    }
+
+    @FXML
     private void sortByName() {
-        Project[] projects = getData();
-
-        if (sortNameReversed) {
-            Arrays.sort(projects, Collections.reverseOrder(Comparator.comparing(Project::getName)));
-        } else {
-            Arrays.sort(projects, Comparator.comparing(Project::getName));
-        }
-
-        setData(projects);
+        sortBy(Project::getName, sortNameReversed);
         sortNameReversed = !sortNameReversed;
-        rerender();
     }
 
     @FXML
     private void sortByEndDate() {
-        Project[] projects = getData();
-
-        if (sortEndDateReversed) {
-            Arrays.sort(projects, Collections.reverseOrder(Comparator.comparing(Project::getEndDate)));
-        } else {
-            Arrays.sort(projects, Comparator.comparing(Project::getEndDate));
-        }
-
-        setData(projects);
+        sortBy(Project::getEndDate, sortEndDateReversed);
         sortEndDateReversed = !sortEndDateReversed;
-        rerender();
     }
 }

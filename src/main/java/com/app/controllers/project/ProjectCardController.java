@@ -4,7 +4,7 @@ import com.app.model.Project;
 import com.app.router.generic.Component;
 import com.app.main.Pages;
 import com.app.router.Router;
-import com.app.utils.DateUtil;
+import com.app.utils.datetime.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;

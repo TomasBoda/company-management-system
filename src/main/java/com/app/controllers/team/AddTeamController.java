@@ -18,7 +18,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.net.StandardSocketOptions;
 import java.net.URL;
 import java.util.*;
 
@@ -33,14 +32,13 @@ public class AddTeamController implements Initializable {
     @FXML
     private ScrollPane scrollPane;
 
-    private ArrayList<Employee> teamEmployees = new ArrayList<>();
+    private final ArrayList<Employee> teamEmployees = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        provideDataToEmployeesField();
-        addEmployeesFieldSelectionListener();
-
         NodeUtil.initScrollPane(scrollPane);
+        addEmployeesFieldSelectionListener();
+        provideDataToEmployeesField();
     }
 
     @FXML

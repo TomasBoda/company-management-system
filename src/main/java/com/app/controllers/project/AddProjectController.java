@@ -18,8 +18,6 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddProjectController implements Initializable {
@@ -41,9 +39,9 @@ public class AddProjectController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        NodeUtil.initScrollPane(scrollPane);
         NodeUtil.setTextFieldToNumeric(budgetField);
         provideDataToTeamField();
-        NodeUtil.initScrollPane(scrollPane);
     }
 
     @FXML

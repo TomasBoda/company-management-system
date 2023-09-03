@@ -2,7 +2,6 @@ package com.app.controllers.team;
 
 import com.app.api.Api;
 import com.app.api.Response;
-import com.app.model.Project;
 import com.app.model.Team;
 import com.app.router.generic.LoaderPage;
 import com.app.main.Pages;
@@ -13,12 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class TeamsController extends LoaderPage<Team> implements Initializable {
@@ -29,15 +27,17 @@ public class TeamsController extends LoaderPage<Team> implements Initializable {
     private ScrollPane scrollPane;
     @FXML
     private Label totalCount;
+    @FXML
+    private TextField searchField;
 
     private boolean sortNameReversed = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        renderData(teamsList, "/components/team-card.fxml");
         NodeUtil.initScrollPane(scrollPane);
-
+        addSearchKeyPressListener();
         totalCount.setText(getData().length + " total teams");
+        renderData(teamsList, "/components/team-card.fxml");
     }
 
     @Override
@@ -58,17 +58,22 @@ public class TeamsController extends LoaderPage<Team> implements Initializable {
     }
 
     @FXML
+    private void search() {
+        String query = searchField.getText().trim();
+        filterBy(team -> team.getName().toLowerCase().contains(query.toLowerCase()));
+    }
+
+    private void addSearchKeyPressListener() {
+        searchField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                search();
+            }
+        });
+    }
+
+    @FXML
     private void sortByName() {
-        Team[] teams = getData();
-
-        if (sortNameReversed) {
-            Arrays.sort(teams, Collections.reverseOrder(Comparator.comparing(Team::getName)));
-        } else {
-            Arrays.sort(teams, Comparator.comparing(Team::getName));
-        }
-
-        setData(teams);
+        sortBy(Team::getName, sortNameReversed);
         sortNameReversed = !sortNameReversed;
-        rerender();
     }
 }

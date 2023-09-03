@@ -47,16 +47,16 @@ public class AddTicketController extends Page<Project> implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NodeUtil.setTextFieldToNumeric(pointsField);
-        NodeUtil.provideDataToChoiceBox(statusField, TicketStatus.PENDING, TicketStatus.IN_PROGRESS, TicketStatus.IN_REVIEW, TicketStatus.COMPLETED);
         NodeUtil.initScrollPane(scrollPane);
+        NodeUtil.setTextFieldToNumeric(pointsField);
+        NodeUtil.provideDataToChoiceBox(statusField, TicketStatus.ALL);
     }
 
     @Override
     public void onData(Project data) {
         NodeUtil.provideDataToGenericChoiceBox(projectField, new ProjectConverter(), data);
-        projectField.setValue(data);
         provideEmployeeFieldsWithData();
+        projectField.setValue(data);
     }
 
     @FXML
@@ -89,17 +89,6 @@ public class AddTicketController extends Page<Project> implements Initializable 
         }
 
         Router.navigateWithData(Pages.EDIT_PROJECT, getData());
-    }
-
-    private void provideStatusFieldWithData() {
-        ObservableList<String> list = FXCollections.observableArrayList();
-
-        list.add(TicketStatus.PENDING);
-        list.add(TicketStatus.IN_PROGRESS);
-        list.add(TicketStatus.IN_REVIEW);
-        list.add(TicketStatus.COMPLETED);
-
-        statusField.setItems(list);
     }
 
     private void provideEmployeeFieldsWithData() {

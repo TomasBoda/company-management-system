@@ -72,10 +72,16 @@
 }
 
 .ticket-column {
-    -fx-min-height: 200;
+    -fx-min-height: 350;
     -fx-padding: 10;
 
     -fx-background-color: rgba(0, 0, 0, 0.07);
+}
+
+.ticket-column .ticket-heading {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
 }
 
 .ticket {

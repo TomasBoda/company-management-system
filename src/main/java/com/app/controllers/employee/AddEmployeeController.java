@@ -13,7 +13,6 @@ import com.app.utils.NodeUtil;
 import com.app.utils.Validator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -38,11 +37,10 @@ public class AddEmployeeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NodeUtil.setTextFieldToNumeric(salaryField);
-        NodeUtil.provideDataToChoiceBox(roleField, Role.PRODUCT_MANAGER, Role.PRODUCT_OWNER, Role.SOFTWARE_DEVELOPER, Role.SOFTWARE_TESTER, Role.SCRUM_MASTER);
-        NodeUtil.provideDataToChoiceBox(employmentTypeField, EmploymentType.FULL_TIME, EmploymentType.PART_TIME, EmploymentType.INTERNSHIP, EmploymentType.CONTRACT);
-
         NodeUtil.initScrollPane(scrollPane);
+        NodeUtil.setTextFieldToNumeric(salaryField);
+        NodeUtil.provideDataToChoiceBox(roleField, Role.ALL);
+        NodeUtil.provideDataToChoiceBox(employmentTypeField, EmploymentType.ALL);
     }
 
     @FXML

@@ -28,19 +28,19 @@
                 <Label styleClass="page-heading">Finances</Label>
 
                 <GridPane hgap="30" vgap="10">
-                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="0">Revenue</Label>
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="0">Monthly revenue</Label>
                     <Label GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="revenueLabel" />
 
-                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="1">Spendings</Label>
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="1">Monthly spendings</Label>
                     <Label GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="spendingsLabel" />
 
-                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="2">Income</Label>
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="2">Monthly income</Label>
                     <Label GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="incomeRatio" />
                 </GridPane>
             </VBox>
 
             <VBox GridPane.hgrow="ALWAYS" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="panel" spacing="20">
-                <Label styleClass="page-heading">Revenue by Project</Label>
+                <Label styleClass="page-heading">Monthly revenue by Project</Label>
                 <PieChart fx:id="projectChart" />
             </VBox>
 

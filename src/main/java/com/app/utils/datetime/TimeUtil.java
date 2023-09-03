@@ -1,4 +1,4 @@
-package com.app.utils;
+package com.app.utils.datetime;
 
 import java.sql.Date;
 import java.sql.Timestamp;

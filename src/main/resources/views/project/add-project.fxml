@@ -15,7 +15,7 @@
                 <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Description</Label>
                 <TextArea GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="descriptionField" promptText="Project description" />
 
-                <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Budget</Label>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Monthly budget</Label>
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="budgetField" promptText="Project budget (monthly)" />
 
                 <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Team</Label>

@@ -11,8 +11,6 @@ import com.app.utils.NodeUtil;
 import com.app.utils.Validator;
 import com.app.utils.converters.EmployeeConverter;
 import com.app.utils.converters.ProjectConverter;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -47,9 +45,9 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NodeUtil.setTextFieldToNumeric(pointsField);
-        NodeUtil.provideDataToChoiceBox(statusField, TicketStatus.PENDING, TicketStatus.IN_PROGRESS, TicketStatus.IN_REVIEW, TicketStatus.COMPLETED);
         NodeUtil.initScrollPane(scrollPane);
+        NodeUtil.setTextFieldToNumeric(pointsField);
+        NodeUtil.provideDataToChoiceBox(statusField, TicketStatus.ALL);
     }
 
     @Override
@@ -63,8 +61,8 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         pointsField.setText(data.getPoints() + "");
 
         Project project = getProject(data.getProjectId());
-        NodeUtil.provideDataToGenericChoiceBox(projectField, new ProjectConverter(), project);
         projectField.setValue(project);
+        NodeUtil.provideDataToGenericChoiceBox(projectField, new ProjectConverter(), project);
 
         Employee assigneeEmployee = getEmployee(data.getAssigneeId());
         Employee reviewerEmployee = getEmployee(data.getReviewerId());

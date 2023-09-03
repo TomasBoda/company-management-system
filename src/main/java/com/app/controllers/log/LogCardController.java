@@ -2,8 +2,7 @@ package com.app.controllers.log;
 
 import com.app.model.Log;
 import com.app.router.generic.Component;
-import com.app.utils.DateUtil;
-import com.app.utils.TimeUtil;
+import com.app.utils.datetime.TimeUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

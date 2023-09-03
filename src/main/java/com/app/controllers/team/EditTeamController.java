@@ -40,10 +40,9 @@ public class EditTeamController extends Page<Team> implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        provideDataToEmployeesField();
-        addEmployeesFieldSelectionListener();
-
         NodeUtil.initScrollPane(scrollPane);
+        addEmployeesFieldSelectionListener();
+        provideDataToEmployeesField();
     }
 
     @Override

@@ -21,9 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditProjectController extends Page<Project> implements Initializable {
@@ -59,8 +57,8 @@ public class EditProjectController extends Page<Project> implements Initializabl
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        NodeUtil.setTextFieldToNumeric(budgetField);
         NodeUtil.initScrollPane(scrollPane);
+        NodeUtil.setTextFieldToNumeric(budgetField);
         provideDataToTeamField();
     }
 
@@ -75,9 +73,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
         startDateField.setValue(data.getStartDate().toLocalDate());
         endDateField.setValue(data.getEndDate().toLocalDate());
 
-        String teamId = data.getTeamId();
-        Team team = fetchProjectTeam(teamId);
-
+        Team team = fetchProjectTeam(data.getTeamId());
         teamField.setValue(team);
 
         tickets = fetchTickets();

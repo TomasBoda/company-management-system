@@ -7,16 +7,11 @@ import com.app.utils.Dialog;
 import com.app.utils.NodeUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 
-import java.net.StandardSocketOptions;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -42,12 +37,12 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        NodeUtil.initScrollPane(scrollPane);
+
         fillGeneralDashboard();
         fillFinancesDashboard();
         fillProjectRevenueDashboard();
         fillRoleSalaryDashboard();
-
-        NodeUtil.initScrollPane(scrollPane);
     }
 
     private void fillGeneralDashboard() {
@@ -85,33 +80,33 @@ public class DashboardController implements Initializable {
         Project[] projects = fetchProjects();
 
         for (Project project : projects) {
-            PieChart.Data slice = new PieChart.Data(project.getName() + " (" + project.getBudget() + "€)", project.getBudget());
-            projectChart.getData().add(slice);
+            String label = project.getName() + " (" + project.getBudget() + "€)";
+            double data = project.getBudget();
+
+            PieChart.Data pieChartEntry = new PieChart.Data(label, data);
+            projectChart.getData().add(pieChartEntry);
         }
     }
 
     private void fillRoleSalaryDashboard() {
         int totalSpendings = fetchTotalSpendings();
 
-        int softwareDeveloperSalarySum = Api.other().getTotalSalaryByRole(Role.SOFTWARE_DEVELOPER).getData();
-        int softwareTesterSalarySum = Api.other().getTotalSalaryByRole(Role.SOFTWARE_TESTER).getData();
-        int productOwnerSalarySum = Api.other().getTotalSalaryByRole(Role.PRODUCT_OWNER).getData();
-        int productManagerSalarySum = Api.other().getTotalSalaryByRole(Role.PRODUCT_MANAGER).getData();
-        int scrumMasterSalarySum = Api.other().getTotalSalaryByRole(Role.SCRUM_MASTER).getData();
+        for (String role : Role.ALL) {
+            Response<Integer> response = Api.other().getTotalSalaryByRole(role);
 
-        double softwareDeveloperRatio = (double) softwareDeveloperSalarySum / totalSpendings;
-        double softwareTesterRatio = (double) softwareTesterSalarySum / totalSpendings;
-        double projectOwnerRatio = (double) productOwnerSalarySum / totalSpendings;
-        double projectManagerRatio = (double) productManagerSalarySum / totalSpendings;
-        double scrumMasterRatio = (double) scrumMasterSalarySum / totalSpendings;
+            if (response.getStatus() != 200) {
+                Dialog.info("Database Error", response.getMessage());
+                System.exit(0);
+            }
 
-        PieChart.Data slice1 = new PieChart.Data(Role.SOFTWARE_DEVELOPER + " (" + softwareDeveloperSalarySum + "€)", softwareDeveloperRatio);
-        PieChart.Data slice2 = new PieChart.Data(Role.SOFTWARE_TESTER + " (" + softwareTesterSalarySum + "€)", softwareTesterRatio);
-        PieChart.Data slice3 = new PieChart.Data(Role.PRODUCT_OWNER + " (" + productOwnerSalarySum + "€)", projectOwnerRatio);
-        PieChart.Data slice4 = new PieChart.Data(Role.PRODUCT_MANAGER + " (" + productManagerSalarySum + "€)", projectManagerRatio);
-        PieChart.Data slice5 = new PieChart.Data(Role.SCRUM_MASTER + " (" + scrumMasterSalarySum + "€)", scrumMasterRatio);
+            int totalSalary = response.getData();
+            double ratio = (double) totalSalary / totalSpendings;
 
-        salaryChart.getData().addAll(slice1, slice2, slice3, slice4, slice5);
+            String label = role + " (" + totalSalary + "€)";
+
+            PieChart.Data pieChartEntry = new PieChart.Data(label, ratio);
+            salaryChart.getData().add(pieChartEntry);
+        }
     }
 
     private Project[] fetchProjects() {

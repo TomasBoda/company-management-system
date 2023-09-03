@@ -46,7 +46,6 @@ public class Api {
             //connection = DriverManager.getConnection("jdbc:h2:mem:./database/h2", "", "");
             initialize(connection);
         } catch (SQLException e) {
-            e.printStackTrace();
             Dialog.info("Database Error", "Could not connect to the database.");
             System.exit(0);
         }

@@ -7,6 +7,12 @@
     <Label styleClass="page-title">Projects</Label>
     <Button onAction="#addProject">New Project</Button>
 
+    <Label styleClass="page-heading">Search</Label>
+    <HBox spacing="10">
+        <TextField fx:id="searchField" promptText="Search by name" />
+        <Button onAction="#search">Search</Button>
+    </HBox>
+
     <Label styleClass="page-heading">Sort by</Label>
     <HBox spacing="10">
         <Button onAction="#sortByName">Name</Button>

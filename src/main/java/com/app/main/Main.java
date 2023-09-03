@@ -2,7 +2,7 @@ package com.app.main;
 
 import com.app.api.Api;
 import com.app.model.*;
-import com.app.utils.DateUtil;
+import com.app.utils.datetime.DateUtil;
 import com.app.utils.Generator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
