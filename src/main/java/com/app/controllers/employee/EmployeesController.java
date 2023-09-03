@@ -8,12 +8,15 @@ import com.app.main.Pages;
 import com.app.router.Router;
 import com.app.utils.Dialog;
 import com.app.utils.NodeUtil;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -40,6 +43,7 @@ public class EmployeesController extends LoaderPage<Employee> implements Initial
         NodeUtil.initScrollPane(scrollPane);
 
         totalCount.setText(getData().length + " total employees");
+        addSearchKeyPressListener();
     }
 
     @Override
@@ -75,6 +79,14 @@ public class EmployeesController extends LoaderPage<Employee> implements Initial
 
         setData(filteredList.toArray(Employee[]::new));
         rerender();
+    }
+
+    private void addSearchKeyPressListener() {
+        searchField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                search();
+            }
+        });
     }
 
     @FXML
