@@ -42,8 +42,8 @@ public class Api {
 
     public static void connect() {
         try {
-            //connection = DriverManager.getConnection("jdbc:h2:./database/h2;DB_CLOSE_ON_EXIT=FALSE", "", "");
-            connection = DriverManager.getConnection("jdbc:h2:mem:./database/h2", "", "");
+            connection = DriverManager.getConnection("jdbc:h2:./database/h2;DB_CLOSE_ON_EXIT=FALSE", "", "");
+            //connection = DriverManager.getConnection("jdbc:h2:mem:./database/h2", "", "");
             initialize(connection);
         } catch (SQLException e) {
             e.printStackTrace();

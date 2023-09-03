@@ -10,6 +10,7 @@ import com.app.router.Router;
 import com.app.utils.Dialog;
 import com.app.utils.NodeUtil;
 import com.app.utils.Validator;
+import com.app.utils.converters.TeamConverter;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,7 +39,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
     @FXML
     private TextField budgetField;
     @FXML
-    private ChoiceBox<String> teamField;
+    private ChoiceBox<Team> teamField;
     @FXML
     private DatePicker startDateField;
     @FXML
@@ -80,11 +81,7 @@ public class EditProjectController extends Page<Project> implements Initializabl
         String teamId = data.getTeamId();
         Team team = fetchProjectTeam(teamId);
 
-        if (team == null) {
-            teamField.setValue(null);
-        } else {
-            teamField.setValue(team.getName() + "-" + team.getId());
-        }
+        teamField.setValue(team);
 
         tickets = fetchTickets();
         renderTickets();
@@ -101,16 +98,16 @@ public class EditProjectController extends Page<Project> implements Initializabl
         String name = nameField.getText().trim();
         String description = descriptionField.getText().trim();
         String budget = budgetField.getText().trim();
-        String team = teamField.getValue();
+        Team team = teamField.getValue();
         LocalDate startDate = startDateField.getValue();
         LocalDate endDate = endDateField.getValue();
 
-        if (Validator.areEmpty(id, name, description, budget, team)) {
+        if (Validator.areEmpty(id, name, description, budget) || team == null) {
             Dialog.info("Empty fields", "ID, Name, Description, Budget and Team fields cannot be empty.");
             return;
         }
 
-        String teamId = team.split("-")[1];
+        String teamId = team.getId();
 
         Response<Boolean> response = Api.projects().edit(new Project(id, teamId, name, description, Integer.parseInt(budget), Date.valueOf(startDate), Date.valueOf(endDate)));
 
@@ -201,12 +198,6 @@ public class EditProjectController extends Page<Project> implements Initializabl
             System.exit(0);
         }
 
-        List<String> teams = new ArrayList<>();
-
-        for (Team team : response.getData()) {
-            teams.add(team.getName() + "-" + team.getId());
-        }
-
-        NodeUtil.provideDataToChoiceBox(teamField, teams.toArray(String[]::new));
+        NodeUtil.provideDataToGenericChoiceBox(teamField, new TeamConverter(), response.getData());
     }
 }

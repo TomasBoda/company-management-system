@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Api.connect();
-        initializeMockedData();
+        //initializeMockedData();
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/layout.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);

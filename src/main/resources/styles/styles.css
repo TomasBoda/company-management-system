@@ -71,10 +71,6 @@
     -fx-font-size: 12;
 }
 
-#ticketsPanel {
-
-}
-
 .ticket-column {
     -fx-min-height: 200;
     -fx-padding: 10;
@@ -87,6 +83,10 @@
     -fx-background-radius: 3;
 
     -fx-padding: 10;
+}
+
+.ticket:hover {
+    -fx-background-color: rgb(245, 245, 245);
 }
 
 .ticket .ticket-title {

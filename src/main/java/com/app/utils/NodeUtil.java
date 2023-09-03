@@ -1,9 +1,11 @@
 package com.app.utils;
 
+import com.app.utils.converters.EmployeeConverter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.util.StringConverter;
 
 import java.util.Arrays;
 
@@ -21,5 +23,11 @@ public class NodeUtil {
         ObservableList<String> list = FXCollections.observableArrayList();
         list.addAll(Arrays.asList(values));
         choiceBox.setItems(list);
+    }
+
+    @SafeVarargs
+    public static <T> void provideDataToGenericChoiceBox(ChoiceBox<T> choiceBox, StringConverter<T> converter, T... values) {
+        choiceBox.getItems().addAll(values);
+        choiceBox.setConverter(converter);
     }
 }

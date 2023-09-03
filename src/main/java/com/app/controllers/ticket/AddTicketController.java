@@ -10,6 +10,8 @@ import com.app.utils.Dialog;
 import com.app.utils.Generator;
 import com.app.utils.NodeUtil;
 import com.app.utils.Validator;
+import com.app.utils.converters.EmployeeConverter;
+import com.app.utils.converters.ProjectConverter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,7 +26,7 @@ import java.util.ResourceBundle;
 public class AddTicketController extends Page<Project> implements Initializable {
 
     @FXML
-    private TextField projectField;
+    private ChoiceBox<Project> projectField;
     @FXML
     private TextField titleField;
     @FXML
@@ -34,22 +36,23 @@ public class AddTicketController extends Page<Project> implements Initializable 
     @FXML
     private TextField pointsField;
     @FXML
-    private ChoiceBox<String> assigneeField;
+    private ChoiceBox<Employee> assigneeField;
     @FXML
-    private ChoiceBox<String> reviewerField;
+    private ChoiceBox<Employee> reviewerField;
     @FXML
-    private ChoiceBox<String> reporterField;
+    private ChoiceBox<Employee> reporterField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NodeUtil.setTextFieldToNumeric(pointsField);
-        provideEmployeeFieldsWithData();
-        provideStatusFieldWithData();
+        NodeUtil.provideDataToChoiceBox(statusField, TicketStatus.PENDING, TicketStatus.IN_PROGRESS, TicketStatus.IN_REVIEW, TicketStatus.COMPLETED);
     }
 
     @Override
     public void onData(Project data) {
-        projectField.setText(data.getName() + "-" + data.getId());
+        NodeUtil.provideDataToGenericChoiceBox(projectField, new ProjectConverter(), data);
+        projectField.setValue(data);
+        provideEmployeeFieldsWithData();
     }
 
     @FXML
@@ -59,20 +62,20 @@ public class AddTicketController extends Page<Project> implements Initializable 
         String description = descriptionField.getText().trim();
         String status = statusField.getValue();
         String points = pointsField.getText().trim();
-        String assignee = assigneeField.getValue();
-        String reviewer = reviewerField.getValue();
-        String reporter = reporterField.getValue();
+        Employee assignee = assigneeField.getValue();
+        Employee reviewer = reviewerField.getValue();
+        Employee reporter = reporterField.getValue();
 
-        if (Validator.areEmpty(id, title, description, status, points, assignee, reviewer, reporter)) {
+        if (Validator.areEmpty(id, title, description, status, points) || assignee == null || reviewer == null || reporter == null) {
             Dialog.info("Empty Field", "Id, Title, Description, Status, Points, Assignee, Reviewer and Reporter fields cannot be empty.");
             return;
         }
 
         String projectId = getData().getId();
 
-        String assigneeId = assignee.split("-")[1];
-        String reviewerId = reviewer.split("-")[1];
-        String reporterId = reporter.split("-")[1];
+        String assigneeId = assignee.getId();
+        String reviewerId = reviewer.getId();
+        String reporterId = reporter.getId();
 
         Response<Boolean> response = Api.tickets().add(new Ticket(id, projectId, title, description, status, Integer.parseInt(points), assigneeId, reviewerId, reporterId));
 
@@ -96,21 +99,15 @@ public class AddTicketController extends Page<Project> implements Initializable 
     }
 
     private void provideEmployeeFieldsWithData() {
-        ObservableList<String> list = FXCollections.observableArrayList();
-
-        Response<Employee[]> response = Api.employees().getAll();
+        Response<Employee[]> response = Api.teams().getTeamEmployees(getData().getTeamId());
 
         if (response.getStatus() != 200) {
             Dialog.info("Database Error", response.getMessage());
             System.exit(0);
         }
 
-        for (Employee employee : response.getData()) {
-            list.add(employee.getName() + "-" + employee.getId());
-        }
-
-        assigneeField.setItems(list);
-        reviewerField.setItems(list);
-        reporterField.setItems(list);
+        NodeUtil.provideDataToGenericChoiceBox(assigneeField, new EmployeeConverter(), response.getData());
+        NodeUtil.provideDataToGenericChoiceBox(reviewerField, new EmployeeConverter(), response.getData());
+        NodeUtil.provideDataToGenericChoiceBox(reporterField, new EmployeeConverter(), response.getData());
     }
 }

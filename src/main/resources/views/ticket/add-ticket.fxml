@@ -9,7 +9,7 @@
     <VBox styleClass="panel" spacing="20">
         <GridPane hgap="10" vgap="10">
             <Label GridPane.columnIndex="0" GridPane.rowIndex="0">Project</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="projectField" promptText="Ticket project" editable="false" />
+            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="projectField" />
 
             <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Title</Label>
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="titleField" promptText="Ticket title" />
