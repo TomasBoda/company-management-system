@@ -1,8 +1,10 @@
 package com.app.api.model;
 
 import com.app.api.Response;
+import com.app.model.Role;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -47,6 +49,26 @@ public class Other {
             return new Response<>(200, "Total budget fetched successfully", totalBudget);
         } catch (SQLException e) {
             return new Response<>(400, "Total budget couldn't be fetched");
+        }
+    }
+
+    public Response<Integer> getTotalSalaryByRole(String role) {
+        String query = "SELECT SUM(salary) AS totalSalary FROM employees WHERE role = ?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, role);
+            ResultSet resultSet = statement.executeQuery();
+
+            int totalSalary = 0;
+
+            if (resultSet.next()) {
+                totalSalary = resultSet.getInt("totalSalary");
+            }
+
+            return new Response<>(200, "Total salary fetched successfully", totalSalary);
+        } catch (SQLException e) {
+            return new Response<>(400, "Total salary couldn't be fetched");
         }
     }
 }

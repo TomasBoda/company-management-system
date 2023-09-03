@@ -32,6 +32,7 @@ public class Main extends Application {
 
         stage.setTitle("Company Management System v1.0");
         stage.setScene(scene);
+        stage.setFullScreen(true);
         stage.setMinWidth(MIN_WIDTH);
         stage.setMinHeight(MIN_HEIGHT);
         stage.show();

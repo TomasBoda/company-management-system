@@ -14,10 +14,7 @@ import com.app.utils.converters.EmployeeConverter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -36,6 +33,8 @@ public class EditTeamController extends Page<Team> implements Initializable {
     private ChoiceBox<Employee> employeeSelection;
     @FXML
     private VBox employeesList;
+    @FXML
+    private ScrollPane scrollPane;
 
     private ArrayList<Employee> teamEmployees;
 
@@ -43,6 +42,8 @@ public class EditTeamController extends Page<Team> implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         provideDataToEmployeesField();
         addEmployeesFieldSelectionListener();
+
+        NodeUtil.initScrollPane(scrollPane);
     }
 
     @Override

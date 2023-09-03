@@ -3,33 +3,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox styleClass="page" spacing="30" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.employee.EditEmployeeController">
-    <Label styleClass="page-title" fx:id="employeeName" />
+<ScrollPane fx:id="scrollPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.employee.EditEmployeeController">
+    <VBox styleClass="page" spacing="30">
+        <Label styleClass="page-title" fx:id="employeeName" />
 
-    <VBox styleClass="panel" spacing="20">
-        <GridPane vgap="10" hgap="10">
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="0">ID</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="idField" editable="false" />
+        <VBox styleClass="panel" spacing="20">
+            <GridPane vgap="10" hgap="10">
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0">ID</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="idField" editable="false" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Name</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="nameField" promptText="Employee name" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Name</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="nameField" promptText="Employee name" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="2">E-mail</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="emailField" promptText="Employee e-mail" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2">E-mail</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="emailField" promptText="Employee e-mail" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Role</Label>
-            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="roleField" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Role</Label>
+                <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="roleField" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="4">Employment</Label>
-            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="employmentTypeField" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="4">Employment</Label>
+                <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="employmentTypeField" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="5">Salary</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="salaryField" promptText="Employee salary (monthly)" />
-        </GridPane>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="5">Salary</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="salaryField" promptText="Employee salary (monthly)" />
+            </GridPane>
 
-        <HBox spacing="10">
-            <Button onAction="#editEmployee">Update</Button>
-            <Button onAction="#removeEmployee">Remove</Button>
-        </HBox>
+            <HBox spacing="10">
+                <Button onAction="#editEmployee">Update</Button>
+                <Button onAction="#removeEmployee">Remove</Button>
+            </HBox>
+        </VBox>
     </VBox>
-</VBox>
+</ScrollPane>

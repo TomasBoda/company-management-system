@@ -3,25 +3,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.team.EditTeamController">
-    <Label styleClass="page-title" fx:id="teamName" />
-    <VBox styleClass="panel" spacing="20">
-        <GridPane hgap="10" vgap="10">
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="0">ID</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="idField" promptText="Team ID" editable="false" />
+<ScrollPane fx:id="scrollPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.team.EditTeamController">
+    <VBox styleClass="page" spacing="20">
+        <Label styleClass="page-title" fx:id="teamName" />
+        <VBox styleClass="panel" spacing="20">
+            <GridPane hgap="10" vgap="10">
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0">ID</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="idField" promptText="Team ID" editable="false" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Name</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="nameField" promptText="Team name" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Name</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="nameField" promptText="Team name" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Employees</Label>
-            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="employeeSelection" />
-        </GridPane>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Employees</Label>
+                <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="employeeSelection" />
+            </GridPane>
 
-        <VBox fx:id="employeesList" spacing="5" />
+            <VBox fx:id="employeesList" spacing="5" />
 
-        <HBox spacing="10">
-            <Button onAction="#editTeam">Update</Button>
-            <Button onAction="#removeTeam">Remove</Button>
-        </HBox>
+            <HBox spacing="10">
+                <Button onAction="#editTeam">Update</Button>
+                <Button onAction="#removeTeam">Remove</Button>
+            </HBox>
+        </VBox>
     </VBox>
-</VBox>
+</ScrollPane>

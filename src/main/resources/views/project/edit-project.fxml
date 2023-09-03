@@ -37,6 +37,8 @@
             </HBox>
         </VBox>
 
+        <Label styleClass="page-heading">Ticket Board</Label>
+
         <Button onAction="#addTicket">New Ticket</Button>
 
         <HBox spacing="10">

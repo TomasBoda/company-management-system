@@ -3,30 +3,51 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx"  xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.dashboard.DashboardController">
-    <Label styleClass="page-title">Dashboard</Label>
+<?import javafx.scene.chart.PieChart?>
+<ScrollPane fx:id="scrollPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.dashboard.DashboardController">
+    <VBox styleClass="page" spacing="20">
+        <Label styleClass="page-title">Dashboard</Label>
 
-    <VBox styleClass="panel" spacing="20">
-        <Label styleClass="page-heading">Overview</Label>
+        <GridPane hgap="20" vgap="20">
+            <VBox GridPane.hgrow="ALWAYS" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="panel" spacing="20">
+                <Label styleClass="page-heading">Overview</Label>
 
-        <GridPane hgap="30" vgap="10">
-            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="0">Employees</Label>
-            <Label GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="employeesLabel" />
+                <GridPane hgap="30" vgap="10">
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="0">Employees</Label>
+                    <Label GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="employeesLabel" />
 
-            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="1">Teams</Label>
-            <Label GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="teamsLabel" />
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="1">Teams</Label>
+                    <Label GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="teamsLabel" />
 
-            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="2">Projects</Label>
-            <Label GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="projectsLabel" />
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="2">Projects</Label>
+                    <Label GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="projectsLabel" />
+                </GridPane>
+            </VBox>
 
-            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="3">Revenue</Label>
-            <Label GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="revenueLabel" />
+            <VBox GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="panel" spacing="20">
+                <Label styleClass="page-heading">Finances</Label>
 
-            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="4">Spendings</Label>
-            <Label GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="spendingsLabel" />
+                <GridPane hgap="30" vgap="10">
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="0">Revenue</Label>
+                    <Label GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="revenueLabel" />
 
-            <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="5">Income ratio</Label>
-            <ProgressBar GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="incomeRatio" />
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="1">Spendings</Label>
+                    <Label GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="spendingsLabel" />
+
+                    <Label styleClass="text-bold" GridPane.columnIndex="0" GridPane.rowIndex="2">Income</Label>
+                    <Label GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="incomeRatio" />
+                </GridPane>
+            </VBox>
+
+            <VBox GridPane.hgrow="ALWAYS" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="panel" spacing="20">
+                <Label styleClass="page-heading">Revenue by Project</Label>
+                <PieChart fx:id="projectChart" />
+            </VBox>
+
+            <VBox GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="panel" spacing="20">
+                <Label styleClass="page-heading">Salary by Role</Label>
+                <PieChart fx:id="salaryChart" />
+            </VBox>
         </GridPane>
     </VBox>
-</VBox>
+</ScrollPane>

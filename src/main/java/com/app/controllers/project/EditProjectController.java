@@ -60,11 +60,8 @@ public class EditProjectController extends Page<Project> implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NodeUtil.setTextFieldToNumeric(budgetField);
+        NodeUtil.initScrollPane(scrollPane);
         provideDataToTeamField();
-
-        scrollPane.setFitToWidth(true);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setStyle("-fx-background-color: transparent;");
     }
 
     @Override

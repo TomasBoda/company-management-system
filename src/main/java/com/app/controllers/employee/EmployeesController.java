@@ -7,16 +7,17 @@ import com.app.router.generic.LoaderPage;
 import com.app.main.Pages;
 import com.app.router.Router;
 import com.app.utils.Dialog;
+import com.app.utils.NodeUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class EmployeesController extends LoaderPage<Employee> implements Initializable {
 
@@ -24,6 +25,10 @@ public class EmployeesController extends LoaderPage<Employee> implements Initial
     private VBox employeesList;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Label totalCount;
+    @FXML
+    private TextField searchField;
 
     private boolean sortNameReversed = false;
     private boolean sortRoleReversed = false;
@@ -32,10 +37,9 @@ public class EmployeesController extends LoaderPage<Employee> implements Initial
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         renderData(employeesList, "/components/employee-card.fxml");
+        NodeUtil.initScrollPane(scrollPane);
 
-        scrollPane.setFitToWidth(true);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setStyle("-fx-background-color: transparent;");
+        totalCount.setText(getData().length + " total employees");
     }
 
     @Override
@@ -48,6 +52,29 @@ public class EmployeesController extends LoaderPage<Employee> implements Initial
         }
 
         return response.getData();
+    }
+
+    @FXML
+    private void search() {
+        String query = searchField.getText().trim();
+
+        if (query.isEmpty()) {
+            setData(loadData());
+            rerender();
+            return;
+        }
+
+        Employee[] employees = getData();
+        List<Employee> filteredList = new ArrayList<>();
+
+        for (Employee employee : employees) {
+            if (employee.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(employee);
+            }
+        }
+
+        setData(filteredList.toArray(Employee[]::new));
+        rerender();
     }
 
     @FXML

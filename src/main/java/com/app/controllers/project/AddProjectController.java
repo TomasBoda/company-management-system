@@ -13,10 +13,7 @@ import com.app.utils.Validator;
 import com.app.utils.converters.TeamConverter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.Date;
@@ -39,11 +36,14 @@ public class AddProjectController implements Initializable {
     private DatePicker startDateField;
     @FXML
     private DatePicker endDateField;
+    @FXML
+    private ScrollPane scrollPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NodeUtil.setTextFieldToNumeric(budgetField);
         provideDataToTeamField();
+        NodeUtil.initScrollPane(scrollPane);
     }
 
     @FXML

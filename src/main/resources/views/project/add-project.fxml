@@ -3,30 +3,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox styleClass="page" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.project.AddProjectController">
-    <Label styleClass="page-title">New Project</Label>
+<ScrollPane fx:id="scrollPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.app.controllers.project.AddProjectController">
+    <VBox styleClass="page" spacing="20">
+        <Label styleClass="page-title">New Project</Label>
 
-    <VBox styleClass="panel" spacing="20">
-        <GridPane hgap="10" vgap="10">
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="0">Name</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="nameField" promptText="Project name" />
+        <VBox styleClass="panel" spacing="20">
+            <GridPane hgap="10" vgap="10">
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="0">Name</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="nameField" promptText="Project name" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Description</Label>
-            <TextArea GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="descriptionField" promptText="Project description" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="1">Description</Label>
+                <TextArea GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="descriptionField" promptText="Project description" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Budget</Label>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="budgetField" promptText="Project budget (monthly)" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="2">Budget</Label>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="budgetField" promptText="Project budget (monthly)" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Team</Label>
-            <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="teamField" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="3">Team</Label>
+                <ChoiceBox GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="teamField" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="4">Start Date</Label>
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="startDateField" promptText="Project start date" />
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="4">Start Date</Label>
+                <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="startDateField" promptText="Project start date" />
 
-            <Label GridPane.columnIndex="0" GridPane.rowIndex="5">End Date</Label>
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="endDateField" promptText="Project end date" />
-        </GridPane>
+                <Label GridPane.columnIndex="0" GridPane.rowIndex="5">End Date</Label>
+                <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="endDateField" promptText="Project end date" />
+            </GridPane>
 
-        <Button onAction="#addProject">Add</Button>
+            <Button onAction="#addProject">Add</Button>
+        </VBox>
     </VBox>
-</VBox>
+</ScrollPane>

@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -36,12 +37,16 @@ public class EditEmployeeController extends Page<Employee> implements Initializa
     private ChoiceBox<String> employmentTypeField;
     @FXML
     private TextField salaryField;
+    @FXML
+    private ScrollPane scrollPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NodeUtil.setTextFieldToNumeric(salaryField);
         NodeUtil.provideDataToChoiceBox(roleField, Role.PRODUCT_MANAGER, Role.PRODUCT_OWNER, Role.SOFTWARE_DEVELOPER, Role.SOFTWARE_TESTER, Role.SCRUM_MASTER);
         NodeUtil.provideDataToChoiceBox(employmentTypeField, EmploymentType.FULL_TIME, EmploymentType.PART_TIME, EmploymentType.INTERNSHIP, EmploymentType.CONTRACT);
+
+        NodeUtil.initScrollPane(scrollPane);
     }
 
     @Override

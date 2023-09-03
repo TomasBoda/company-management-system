@@ -8,8 +8,10 @@ import com.app.router.generic.LoaderPage;
 import com.app.main.Pages;
 import com.app.router.Router;
 import com.app.utils.Dialog;
+import com.app.utils.NodeUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
@@ -25,16 +27,17 @@ public class TeamsController extends LoaderPage<Team> implements Initializable {
     private VBox teamsList;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Label totalCount;
 
     private boolean sortNameReversed = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         renderData(teamsList, "/components/team-card.fxml");
+        NodeUtil.initScrollPane(scrollPane);
 
-        scrollPane.setFitToWidth(true);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setStyle("-fx-background-color: transparent;");
+        totalCount.setText(getData().length + " total teams");
     }
 
     @Override

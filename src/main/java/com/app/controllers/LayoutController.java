@@ -3,6 +3,7 @@ package com.app.controllers;
 import com.app.router.generic.Page;
 import com.app.main.Pages;
 import com.app.router.Router;
+import com.app.utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -55,7 +56,7 @@ public class LayoutController implements Initializable {
             Node view = loader.load();
             layout.setCenter(view);
         } catch (IOException e) {
-            System.err.println("Cannot navigate to page " + page);
+            Dialog.info("Navigation error", "Cannot navigate to page " + page);
             System.exit(0);
         }
     }
@@ -68,7 +69,7 @@ public class LayoutController implements Initializable {
             controller.setData(data);
             layout.setCenter(view);
         } catch (IOException e) {
-            System.err.println("Cannot navigate to page " + page);
+            Dialog.info("Navigation error", "Cannot navigate to page " + page);
             System.exit(0);
         }
     }

@@ -6,8 +6,10 @@ import com.app.model.Log;
 import com.app.model.Team;
 import com.app.router.generic.LoaderPage;
 import com.app.utils.Dialog;
+import com.app.utils.NodeUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
@@ -23,6 +25,8 @@ public class LogsController extends LoaderPage<Log> implements Initializable {
     private VBox logsList;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Label totalCount;
 
     private boolean sortTitleReversed = false;
     private boolean sortDateReversed = false;
@@ -30,10 +34,11 @@ public class LogsController extends LoaderPage<Log> implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         renderData(logsList, "/components/log-card.fxml");
+        NodeUtil.initScrollPane(scrollPane);
 
-        scrollPane.setFitToWidth(true);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        scrollPane.setStyle("-fx-background-color: transparent;");
+        totalCount.setText(getData().length + " total logs");
+        sortByDate();
+        sortByDate();
     }
 
     @Override

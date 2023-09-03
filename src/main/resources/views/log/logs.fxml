@@ -12,6 +12,8 @@
         <Button onAction="#sortByDate">Date</Button>
     </HBox>
 
+    <Label fx:id="totalCount" />
+
     <ScrollPane fx:id="scrollPane">
         <VBox fx:id="logsList" spacing="10" />
     </ScrollPane>
