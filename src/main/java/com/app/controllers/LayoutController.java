@@ -25,31 +25,50 @@ public class LayoutController implements Initializable {
         Router.navigate(Pages.DASHBOARD);
     }
 
+    /**
+     * Navigates the user to the Dashboard page
+     */
     @FXML
     private void navigateToDashboardPage() {
         Router.navigate(Pages.DASHBOARD);
     }
 
+    /**
+     * Navigates the user to the Employees page
+     */
     @FXML
     private void navigateToEmployeesPage() {
         Router.navigate(Pages.EMPLOYEES);
     }
 
+    /**
+     * Navigates the user to the Teams page
+     */
     @FXML
     private void navigateToTeamsPage() {
         Router.navigate(Pages.TEAMS);
     }
 
+    /**
+     * Navigates the user to the Projects page
+     */
     @FXML
     private void navigateToProjectsPage() {
         Router.navigate(Pages.PROJECTS);
     }
 
+    /**
+     * Navigates the user to the Logs page
+     */
     @FXML
     private void navigateToLogsPage() {
         Router.navigate(Pages.LOGS);
     }
 
+    /**
+     * Navigates the user to the page specified
+     * @param page absolute path of the FXML file/component to navigate the user to
+     */
     public void navigate(String page) {
         try {
             FXMLLoader loader = new FXMLLoader(LayoutController.class.getResource(page));
@@ -61,6 +80,12 @@ public class LayoutController implements Initializable {
         }
     }
 
+    /**
+     * Navigates the user to the page specified and provides the page with the specified data
+     * @param page absolute path of the FXML file/component to navigate the user to
+     * @param data data object to provide to the page
+     * @param <T> generic parameter representing the datatype of the provided data
+     */
     public <T> void navigateWithData(String page, T data) {
         try {
             FXMLLoader loader = new FXMLLoader((LayoutController.class.getResource(page)));

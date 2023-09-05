@@ -52,8 +52,13 @@ public class AddEmployeeController implements Initializable {
         String employmentType = employmentTypeField.getValue();
         String salary = salaryField.getText().trim();
 
-        if (Validator.areEmpty(name, email, role, employmentType, salary)) {
+        if (Validator.areEmpty(name, email, salary) || role == null || employmentType == null) {
             Dialog.info("Empty fields", "Name, E-mail, Employment and Salary fields cannot be empty.");
+            return;
+        }
+
+        if (!Validator.isValidEmail(email)) {
+            Dialog.info("Format error", "E-mail is in incorrect form");
             return;
         }
 

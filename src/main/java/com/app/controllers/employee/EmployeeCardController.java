@@ -23,6 +23,9 @@ public class EmployeeCardController extends Component<Employee> {
         employmentType.setText(employee.getEmploymentType());
     }
 
+    /**
+     * Navigates the user to the edit employee page
+     */
     @FXML
     private void navigateToEditEmployeePage() {
         Router.navigateWithData(Pages.EDIT_EMPLOYEE, getData());

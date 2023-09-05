@@ -54,8 +54,8 @@ public class AddProjectController implements Initializable {
         LocalDate startDate = startDateField.getValue();
         LocalDate endDate = endDateField.getValue();
 
-        if (Validator.areEmpty(id, name, description, budget) || team == null) {
-            Dialog.info("Empty fields", "ID, Name, Description and Team fields cannot be empty.");
+        if (Validator.areEmpty(id, name, description, budget) || team == null || startDate == null || endDate == null) {
+            Dialog.info("Empty fields", "ID, Name, Description, Team, Start Date or End Date fields cannot be empty.");
             return;
         }
 

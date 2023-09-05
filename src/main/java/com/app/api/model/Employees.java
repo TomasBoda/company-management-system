@@ -20,6 +20,11 @@ public class Employees {
         createEmployeesTable();
     }
 
+    /**
+     * Adds a new employee to the database
+     * @param employee Employee object to be added to the database
+     * @return API Response object
+     */
     public Response<Boolean> add(Employee employee) {
         String query = "INSERT INTO employees (id, name, email, role, employmentType, salary) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -41,6 +46,11 @@ public class Employees {
         }
     }
 
+    /**
+     * Updates an existing employee in the database
+     * @param employee Employee object to be updated in the database
+     * @return API Response object
+     */
     public Response<Boolean> edit(Employee employee) {
         String query = "UPDATE employees SET name = ?, email = ?, role = ?, employmentType = ?, salary = ? WHERE id = ?";
 
@@ -62,6 +72,11 @@ public class Employees {
         }
     }
 
+    /**
+     * Removes an existing employee from the database
+     * @param id ID of the employee to be removed from the database
+     * @return API Response object
+     */
     public Response<Boolean> remove(String id) {
         String query = "DELETE FROM employees WHERE id = ?";
 
@@ -78,6 +93,11 @@ public class Employees {
         }
     }
 
+    /**
+     * Retrieves an employee from the database by their ID
+     * @param employeeId ID of the employee to be retrieved from the database
+     * @return API Response object
+     */
     public Response<Employee> get(String employeeId) {
         String query = "SELECT * FROM employees WHERE id = ?";
 
@@ -105,6 +125,10 @@ public class Employees {
         }
     }
 
+    /**
+     * Retrieves the complete list of employees from the database
+     * @return API Response object
+     */
     public Response<Employee[]> getAll() {
         String query = "SELECT * FROM employees";
 

@@ -20,6 +20,11 @@ public class Teams {
         createTeamEmployeesTable();
     }
 
+    /**
+     * Adds a new team to the database
+     * @param team Team object to be added to the database
+     * @return API Response object
+     */
     public Response<Boolean> add(Team team) {
         String query = "INSERT INTO teams (id, name) VALUES (?, ?)";
 
@@ -37,6 +42,11 @@ public class Teams {
         }
     }
 
+    /**
+     * Updates an existing team in the database
+     * @param team Team object to update in the database
+     * @return API Response object
+     */
     public Response<Boolean> edit(Team team) {
         String query = "UPDATE teams SET name = ? WHERE id = ?";
 
@@ -54,6 +64,11 @@ public class Teams {
         }
     }
 
+    /**
+     * Removes an existing team in the database by its ID
+     * @param teamId ID of the team to be removed from the database
+     * @return API Response object
+     */
     public Response<Boolean> remove(String teamId) {
         String query = "DELETE FROM teams WHERE id = ?";
 
@@ -70,6 +85,11 @@ public class Teams {
         }
     }
 
+    /**
+     * Retrieves a team from the database by its ID
+     * @param teamId ID of the team to be retrieved
+     * @return API Response object
+     */
     public Response<Team> get(String teamId) {
         String query = "SELECT * FROM teams WHERE id = ?";
 
@@ -93,6 +113,10 @@ public class Teams {
         }
     }
 
+    /**
+     * Retrieves the complete list of teams from the database
+     * @return API Response object
+     */
     public Response<Team[]> getAll() {
         String query = "SELECT * FROM teams";
 
@@ -114,6 +138,12 @@ public class Teams {
         }
     }
 
+    /**
+     * Adds a new employee to a team
+     * @param teamId ID of the team to add the employee to
+     * @param employeeId ID of the employee to be added to the team
+     * @return API Response object
+     */
     public Response<Boolean> addEmployeeToTeam(String teamId, String employeeId) {
         String query = "INSERT INTO teamEmployees (teamId, employeeId) VALUES (?, ?)";
 
@@ -131,6 +161,11 @@ public class Teams {
         }
     }
 
+    /**
+     * Removes all employees associated to a team
+     * @param teamId ID of the team to remove employees from
+     * @return API Response object
+     */
     public Response<Boolean> removeTeamEmployees(String teamId) {
         String query = "DELETE FROM teamEmployees WHERE teamId = ?";
 
@@ -147,6 +182,11 @@ public class Teams {
         }
     }
 
+    /**
+     * Retrieves the complete list of employees associated to a team
+     * @param teamId ID of the team to retrieve the employees from
+     * @return API Response object
+     */
     public Response<Employee[]> getTeamEmployees(String teamId) {
         String query = "SELECT employees.* FROM employees JOIN teamEmployees ON employees.id = teamEmployees.employeeId WHERE teamEmployees.teamId = ?";
 

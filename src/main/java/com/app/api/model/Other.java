@@ -16,6 +16,10 @@ public class Other {
         this.connection = connection;
     }
 
+    /**
+     * Retrieves the total company spendings amount from the database
+     * @return API Response object
+     */
     public Response<Integer> getTotalSpendings() {
         String query = "SELECT SUM(salary) AS totalSalary FROM employees";
 
@@ -34,6 +38,10 @@ public class Other {
         }
     }
 
+    /**
+     * Retrieves the total company revenue amount from the database
+     * @return API Response object
+     */
     public Response<Integer> getTotalRevenue() {
         String query = "SELECT SUM(budget) AS totalBudget FROM projects";
 
@@ -52,6 +60,11 @@ public class Other {
         }
     }
 
+    /**
+     * Retrieves the total salary amount by role from the database
+     * @param role role to retrieve the salary by
+     * @return API Response object
+     */
     public Response<Integer> getTotalSalaryByRole(String role) {
         String query = "SELECT SUM(salary) AS totalSalary FROM employees WHERE role = ?";
 

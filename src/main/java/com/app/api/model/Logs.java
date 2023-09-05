@@ -16,6 +16,11 @@ public class Logs {
         createLogsTable();
     }
 
+    /**
+     * Adds a new log to the database
+     * @param log Log object to be added to the database
+     * @return API Response object
+     */
     public Response<Boolean> add(Log log) {
         String query = "INSERT INTO logs (id, title, description) VALUES (?, ?, ?)";
 
@@ -32,6 +37,10 @@ public class Logs {
         }
     }
 
+    /**
+     * Retrieves the complete list of logs from the database
+     * @return API Response object
+     */
     public Response<Log[]> getAll() {
         String query = "SELECT * FROM logs";
 

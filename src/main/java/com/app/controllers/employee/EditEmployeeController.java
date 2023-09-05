@@ -69,9 +69,14 @@ public class EditEmployeeController extends Page<Employee> implements Initializa
         String employmentType = employmentTypeField.getValue();
         String salary = salaryField.getText().trim();
 
-        if (Validator.areEmpty(name, email, role, employmentType, salary)) {
-            System.out.println("Field cannot be empty");
-            System.exit(0);
+        if (Validator.areEmpty(name, email, salary) || role == null || employmentType == null) {
+            Dialog.info("Empty fields", "Name, E-mail, Employment and Salary fields cannot be empty.");
+            return;
+        }
+
+        if (!Validator.isValidEmail(email)) {
+            Dialog.info("Format error", "E-mail is in incorrect form");
+            return;
         }
 
         Response<Boolean> response = Api.employees().edit(new Employee(id, name, email, role, employmentType, Integer.parseInt(salary)));

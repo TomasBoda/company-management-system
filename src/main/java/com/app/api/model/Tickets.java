@@ -20,6 +20,11 @@ public class Tickets {
         createTicketsTable();
     }
 
+    /**
+     * Adds a new ticket to the database
+     * @param ticket Ticket object to add to the database
+     * @return API Response object
+     */
     public Response<Boolean> add(Ticket ticket) {
         String query = "INSERT INTO tickets (id, projectId, title, description, status, points, assigneeId, reviewerId, reporterId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -44,6 +49,11 @@ public class Tickets {
         }
     }
 
+    /**
+     * Updates an existing ticket in the database
+     * @param ticket Ticket object to be updated in the database
+     * @return API Response object
+     */
     public Response<Boolean> edit(Ticket ticket) {
         String query = "UPDATE tickets SET projectId = ?, title = ?, description = ?, status = ?, points = ?, assigneeId = ?, reviewerId = ?, reporterId = ? WHERE id = ?";
 
@@ -68,6 +78,11 @@ public class Tickets {
         }
     }
 
+    /**
+     * Removes an existing ticket from the database by its ID
+     * @param ticketId ID of the ticket to be removed from the database
+     * @return API Response object
+     */
     public Response<Boolean> remove(String ticketId) {
         String query = "DELETE FROM tickets WHERE id = ?";
 
@@ -84,6 +99,11 @@ public class Tickets {
         }
     }
 
+    /**
+     * Retrieves a ticket from the database by its ID
+     * @param ticketId ID of the ticket to be retrieved from the database
+     * @return API Response object
+     */
     public Response<Ticket> get(String ticketId) {
         String query = "SELECT * FROM tickets WHERE id = ?";
 
@@ -114,6 +134,11 @@ public class Tickets {
         }
     }
 
+    /**
+     * Retrieves the complete list of tickets of a project from the database
+     * @param projectId ID of the project to retrieve the tickets from
+     * @return API Response object
+     */
     public Response<Ticket[]> getTicketsByProject(String projectId) {
         String query = "SELECT * FROM tickets WHERE projectId = ?";
 

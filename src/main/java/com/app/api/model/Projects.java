@@ -20,6 +20,11 @@ public class Projects {
         createProjectsTable();
     }
 
+    /**
+     * Adds a new project to the database
+     * @param project Project object to be added to the database
+     * @return API Response object
+     */
     public Response<Boolean> add(Project project) {
         String query = "INSERT INTO projects (id, teamId, name, description, budget, startDate, endDate) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -42,6 +47,11 @@ public class Projects {
         }
     }
 
+    /**
+     * Updates an existing project in the database
+     * @param project Project object to be updated in the database
+     * @return API Response object
+     */
     public Response<Boolean> edit(Project project) {
         String query = "UPDATE projects SET teamId = ?, name = ?, description = ?, budget = ?, startDate = ?, endDate = ? WHERE id = ?";
 
@@ -64,6 +74,11 @@ public class Projects {
         }
     }
 
+    /**
+     * Removes an existing project from the database
+     * @param projectId ID of the project to be removed from the database
+     * @return API Response object
+     */
     public Response<Boolean> remove(String projectId) {
         String query = "DELETE FROM projects WHERE id = ?";
 
@@ -80,6 +95,11 @@ public class Projects {
         }
     }
 
+    /**
+     * Retrieves a project from the database by its ID
+     * @param id ID of the project to be retrieved from the database
+     * @return API Response object
+     */
     public Response<Project> get(String id) {
         String query = "SELECT * FROM projects WHERE id = ?";
 
@@ -107,6 +127,10 @@ public class Projects {
         }
     }
 
+    /**
+     * Retrieves the complete list of projects from the database
+     * @return API Response object
+     */
     public Response<Project[]> getAll() {
         String query = "SELECT * FROM projects";
 
@@ -133,6 +157,11 @@ public class Projects {
         }
     }
 
+    /**
+     * Removes all tickets associated to a project from the database
+     * @param projectId ID of the project to remove the tickets from
+     * @return API Response object
+     */
     public Response<Boolean> removeProjectTickets(String projectId) {
         String query = "DELETE FROM tickets WHERE projectId = ?";
 

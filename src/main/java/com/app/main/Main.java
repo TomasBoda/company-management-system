@@ -15,6 +15,13 @@ public class Main extends Application {
     public static final int WIDTH = 1200;
     public static final int HEIGHT = 800;
 
+    /**
+     * The main method of the application that is called when the application starts.
+     * It initializes the windows, views, loads resources and sets all initial parameters
+     *
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         Api.connect();

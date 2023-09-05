@@ -2,6 +2,7 @@ module com.app.main {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires com.h2database;
 
 
     opens com.app.main to javafx.fxml;

@@ -1,10 +1,14 @@
 package com.app.utils.datetime;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class TimeUtil {
 
+    /**
+     * Converts a Timestamp object to a user-friendly textual representation in form of DD.MM.YYYY HH:MM:SS
+     * @param timestamp Timestamp object to convert
+     * @return user-friendly textual representation of the Timestamp object
+     */
     public static String toString(Timestamp timestamp) {
         String[] timestampString = timestamp.toString().split(" ");
 

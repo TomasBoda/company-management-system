@@ -5,6 +5,11 @@ import java.security.NoSuchAlgorithmException;
 
 public class Generator {
 
+    /**
+     * Generates a hash string based on a seed
+     * @param input seed of the generated hash
+     * @return generated hash string
+     */
     public static String getHash(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -22,6 +27,10 @@ public class Generator {
         }
     }
 
+    /**
+     * Generates a random hash string representing an ID
+     * @return generated hash string ID
+     */
     public static String getId() {
         String randomString = Long.toString(System.nanoTime());
         return getHash(randomString);

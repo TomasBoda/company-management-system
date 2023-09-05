@@ -45,6 +45,9 @@ public class DashboardController implements Initializable {
         fillRoleSalaryDashboard();
     }
 
+    /**
+     * Fills the general dashboard panel with data
+     */
     private void fillGeneralDashboard() {
         int projectCount = fetchProjects().length;
         int employeeCount = fetchEmployees().length;
@@ -55,6 +58,9 @@ public class DashboardController implements Initializable {
         projectsLabel.setText(projectCount + " projects");
     }
 
+    /**
+     * Fills the finances dashboard panel with data
+     */
     private void fillFinancesDashboard() {
         int totalRevenue = fetchTotalRevenue();
         int totalSpendings = fetchTotalSpendings();
@@ -76,6 +82,9 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * Fills the project revenue dashboard panel with data
+     */
     private void fillProjectRevenueDashboard() {
         Project[] projects = fetchProjects();
 
@@ -88,6 +97,9 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * Fills the role salary dashboard panel with data
+     */
     private void fillRoleSalaryDashboard() {
         int totalSpendings = fetchTotalSpendings();
 
@@ -109,6 +121,10 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * Fetches the complete list of projects from the database
+     * @return array of projects
+     */
     private Project[] fetchProjects() {
         Response<Project[]> response = Api.projects().getAll();
 
@@ -120,6 +136,10 @@ public class DashboardController implements Initializable {
         return response.getData();
     }
 
+    /**
+     * Fetches the complete list of employees from the database
+     * @return array of employees
+     */
     private Employee[] fetchEmployees() {
         Response<Employee[]> response = Api.employees().getAll();
 
@@ -131,6 +151,10 @@ public class DashboardController implements Initializable {
         return response.getData();
     }
 
+    /**
+     * Fetches the complete list of teams from the database
+     * @return array of teams
+     */
     private Team[] fetchTeams() {
         Response<Team[]> response = Api.teams().getAll();
 
@@ -142,6 +166,10 @@ public class DashboardController implements Initializable {
         return response.getData();
     }
 
+    /**
+     * Fetches total revenue of the company from the database
+     * @return total company revenue
+     */
     private int fetchTotalRevenue() {
         Response<Integer> response = Api.other().getTotalRevenue();
 
@@ -153,6 +181,10 @@ public class DashboardController implements Initializable {
         return response.getData();
     }
 
+    /**
+     * Fetches total spendings of the company from the database
+     * @return total company spendings
+     */
     private int fetchTotalSpendings() {
         Response<Integer> response = Api.other().getTotalSpendings();
 

@@ -24,16 +24,31 @@ public abstract class LoaderPage<T> {
         this.data = loadData();
     }
 
+    /**
+     * Reloads the page data using the loadData function
+     */
     public void reloadData() {
         this.data = loadData();
     }
 
+    /**
+     * Function that specifies what data is loaded to the page and how
+     * @return array of the loaded data
+     */
     public abstract T[] loadData();
 
+    /**
+     * Rerenders the page using the renderData function
+     */
     public void rerender() {
         renderData(panel, componentPath);
     }
 
+    /**
+     * Renders the page's data
+     * @param panel wrapper component around the rendered data
+     * @param componentPath absolute path to the FXML file/component which should be used as a template for one data item to be rendered
+     */
     public void renderData(VBox panel, String componentPath) {
         this.panel = panel;
         this.componentPath = componentPath;
@@ -55,6 +70,10 @@ public abstract class LoaderPage<T> {
         }
     }
 
+    /**
+     * Filters the page's data by a predicate, sets the filtered data to the page's data and rerenders the page
+     * @param predicate predicate using which the data should be filtered
+     */
     public void filterBy(Predicate<T> predicate) {
         T[] data = loadData();
         List<T> filtered = Arrays.stream(data).filter(predicate).toList();
@@ -75,6 +94,12 @@ public abstract class LoaderPage<T> {
         rerender();
     }
 
+    /**
+     * Sorts the page's data by a comparing function, sets the sorted data to the page's data and rerenders the page
+     * @param function comparing function to sort the data by
+     * @param reversed flag determining whether the sorted data should be reversed or not
+     * @param <U> generic parameter for the comparing function
+     */
     public <U extends Comparable<? super U>> void sortBy(Function<? super T, ? extends U> function, boolean reversed) {
         T[] data = getData();
 
@@ -85,10 +110,18 @@ public abstract class LoaderPage<T> {
         rerender();
     }
 
+    /**
+     * Returns the page's data
+     * @return page's data
+     */
     public T[] getData() {
         return data;
     }
 
+    /**
+     * Provides the page with new data
+     * @param data new data to be provided to the page
+     */
     public void setData(T[] data) {
         this.data = data;
     }
