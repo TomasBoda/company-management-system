@@ -87,7 +87,7 @@ public class EditTicketController extends Page<Ticket> implements Initializable 
         Employee reviewer = reviewerField.getValue();
         Employee reporter = reporterField.getValue();
 
-        if (Validator.areEmpty(id, title, description, status, points) || project == null || assignee == null || reviewer == null || reporter == null) {
+        if (Validator.areEmpty(id, title, description, points) || status == null || project == null || assignee == null || reviewer == null || reporter == null) {
             Dialog.info("Empty Field", "Id, Title, Description, Status, Points, Assignee, Reviewer and Reporter fields cannot be empty.");
             return;
         }
