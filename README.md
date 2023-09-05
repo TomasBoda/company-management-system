@@ -8,9 +8,8 @@ This project is a company management system desktop application written in Java 
 To run the application on your local machine, follow the steps below:
 1. clone the project to your local machine using `git clone https://github.com/TomasBoda/company-management-system.git`
 2. navigate to the project root using `cd company-management-system`
-3. add the `h2-2.2.222.jar` file to the classpath
-4. run `mvn clean install`
-5. run the application (entry file `/src/main/java/com/app/main/Main.java`)
+3. run `mvn clean install`
+4. run the application (entry file `/src/main/java/com/app/main/Main.java`)
 
 ## User Manual
 The following sections provide a manual to the user in order to learn how to use the application and navigate through it for testing purposes.
